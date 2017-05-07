@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" type="text/css" rel="stylesheet" >
+    <title>QMS service</title>
+    <style>
+    
+    *{
+        font-family: Roboto;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    
+    .header {
+        background-color: yellow;
+        font: Helvetica;
+    }
+    
+    .headers {
+            width: 3%;
+            float: right;
+            margin: 5px 0px 0px 8px;        
+    }
+    
+    .container {
+        font-size: 18px;
+    }
+    
+    .h2 {
+        text-align: center;
+    }
+    
+    .already {
+        text-align: left;
+        width: 300px;
+        position: absolute;
+        left: 500px;
+        top : 200px;
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    .bbutton {
+        font-size: 12px;
+    }
+        
+    </style>
+</head>
+
+<div class="header">
+<h1>Quick Movie Searching</h1>
+<div class="container">
+    <form action="/search">
+        <div class=form-group>
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="search">
+            <button type="submit" class="btn btn-default">search</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+<div class="already">
+<h2>< List of Movie Searching ></h2>
+</br>
+    <% @allMovie.each do |p| %>
+    <img src="<%= p.poster %>"></br>
+        Title : <a href="/show/<%= p.id %>"><%= p.title %></a></br>
+        Year : <a href="/show/<%= p.id %>"><%= p.year %></a></br>
+        Director : <a href="/show/<%= p.id %>"><%= p.director %></a></br>
+        <button type="submit" class="bbutton"><a href="/delete/<%= p.id%>">DELETE</a></button>
+        <button type="submit" class="bbutton"><a href="/update/<%= p.id%>">UPDATE</a></button></br></br>
+    <% end %>
+</div>
+
+</html>
